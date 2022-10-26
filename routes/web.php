@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 require_once('includes/auth.php');
+require_once('includes/dashboard.php');
+require_once('includes/member.php');
 
 Route::group([
     'middleware' => 'auth',
