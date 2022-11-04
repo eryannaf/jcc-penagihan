@@ -40,16 +40,34 @@
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
-                                <a class="text-center" href="index.html"> <h4>Rosella</h4></a>
+                                <a class="text-center" href="index.html"> <h4>LOGIN</h4></a>
+                                @error('error')
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
 
-                                <form class="mt-5 mb-5 login-input">
+                                <form class="mt-5 mb-5 login-input" action="{{url('/')}}" method="POST">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                                     </div>
+                                    @error('email')
+                                        <span class="text-danger" style="display: block;">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                     </div>
-                                    <button class="btn login-form__btn submit w-100">Sign In</button>
+                                    @error('password')
+                                        <span class="text-danger" style="display: block;">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                    <button class="btn login-form__btn submit w-100" type="submit">Sign In</button>
                                 </form>
                                 <p class="mt-5 login-form__footer">Dont have account? <a href="page-register.html" class="text-primary">Sign Up</a> now</p>
                             </div>

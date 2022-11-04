@@ -11,6 +11,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('pages.dashboard');
+        $user = DB::table('model_has_roles')
+        ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
+        ->join('users', 'users.id', '=', 'model_has_roles.model_id')
+        ->where('roles.name','<>', 'Super Admin')->count();
+
+        $member = DB::table('members')->count();
+        $produk = DB::table('inventaris')->count();
+
+        return view('pages.dashboard', compact('member', 'produk'));
     }
 }

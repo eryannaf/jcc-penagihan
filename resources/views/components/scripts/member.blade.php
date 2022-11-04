@@ -101,7 +101,7 @@
             [
                 { data: 'DT_RowIndex', orderable: false, searchable: false},
                 { data: 'name', name:'member.name'},
-                { data: 'phone', name:'member.detail'},
+                { data: 'phone', name:'member.phone'},
                 { data: 'address', name:'member.address'},
                 { data: 'action', orderable: false, searchable: false},
             ]

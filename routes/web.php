@@ -2,23 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 require_once('includes/auth.php');
-require_once('includes/dashboard.php');
-require_once('includes/member.php');
+
 
 Route::group([
     'middleware' => 'auth',
 ], function() {
+    require_once('includes/dashboard.php');
+    require_once('includes/member.php');
+    require_once('includes/inventaris.php');
+    require_once('includes/confirm.php');
+    require_once('includes/user.php');
+    require_once('includes/invoice.php');
+    require_once('includes/dashboardMember.php');
+    require_once('includes/confirmPayment.php');
 
 });

@@ -30,12 +30,6 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
 
-        $user = DB::table('users')->where('email', $request->email)->first();
-
-        if($user && $user->deleted_at !== null) {
-            return redirect()->back()->withInput()->withErrors(['error' => 'Username tidak ditemukan']);
-        }
-
         $data = [
             'email'     => $request->email,
             'password'  => $request->password,
@@ -48,7 +42,6 @@ class AuthController extends Controller
         }
 
         Auth::attempt($data, $remember);
-
 
         if(Auth::check()) {
             return redirect()->to('/dashboard');
